@@ -1,0 +1,26 @@
+{
+    "name": "shadian/php-test-task-2",
+    "description": "Test task",
+    "type": "project",
+    "require": {
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-libxml": "*",
+        "ext-pdo": "*",
+        "digitalstars/database": "^1.0",
+        "digitalstars/simple-api": "^1.0"
+    },
+    "license": "The Unlicenced",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Valentin Mitrofanov"
+        }
+    ],
+    "minimum-stability": "stable"
+}
