@@ -13,9 +13,9 @@ class TestCopier
     private string $testId;
     private Database $db;
 
-    public function __invoke(int $id, string $newName): string
+    public function __invoke(int $id, string $newName): array
     {
-        $this->db = DB::getConnection();
+        $this->setConnection();
 
         $baseTest = $this->db->query("SELECT * from tests WHERE tests.id = ?i;", [$id])->fetch();
 
@@ -50,7 +50,7 @@ class TestCopier
             call_user_func($callback, $questions);
         }
 
-        return json_encode(['id' => $this->testId]);
+        return ['id' => $this->testId];
     }
 
     private function copyAgreementQuestions(array $questions): void
@@ -391,9 +391,9 @@ class TestCopier
             )->fetchAll();
     }
 
-    private function onFailure(string $message): string
+    private function onFailure(string $message): array
     {
-        return json_encode(['message' => $message]);
+        return ['message' => $message];
     }
 
     private function getCallbacks(): array
@@ -428,5 +428,15 @@ class TestCopier
         }
 
         return $questionText;
+    }
+
+    private function setConnection(): void
+    {
+        try {
+            $this->db = DB::getConnection();
+        } catch (\PDOException $exception) {
+            sleep(1);
+            $this->setConnection();
+        }
     }
 }

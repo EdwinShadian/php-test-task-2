@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0686f82aab776c77e744122cec28b64a",
+    "content-hash": "9b69c8fb853c498df16822e3770c2d40",
     "packages": [
         {
             "name": "digitalstars/database",
@@ -106,6 +106,7 @@
     "platform": {
         "ext-dom": "*",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "ext-libxml": "*",
         "ext-pdo": "*"
     },
